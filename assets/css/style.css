@@ -11,3 +11,8 @@
     margin: 0;
     line-height: 6rem;
 }
+
+/* Modification d'un élément, le texte doit être en vert menthe */
+.proj-prev--mint {
+    color: #15DEA5;
+}

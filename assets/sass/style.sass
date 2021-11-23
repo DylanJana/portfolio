@@ -91,13 +91,21 @@
 }
 
 .form__heading {
-    text_-shadow: .55rem .55rem #15DEA5;
+    text-shadow: .55rem .55rem #15DEA5;
 }
 
 .about__heading {
-    text_-shadow: .55rem .55rem #15DEA5;
+    text-shadow: .55rem .55rem #15DEA5;
 }
 
 .project__heading {
-    text_-shadow: .55rem .55rem #15DEA5;
+    text-shadow: .55rem .55rem #15DEA5;
+}
+
+/* Variable pour la taille fixe de l'ombre de text-shadow .55rem */
+$heading-shadow-size: 0.55rem;
+
+/* Dans la mixin j'applique $heading-shadow-size en taille par défaut */
+@mixin heading-shadow($color: $color-primary, $shadow-size: $heading-shadow-size) {
+    text-shadow: $shadow-size solid $colour; 
 }

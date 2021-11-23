@@ -109,3 +109,28 @@ $heading-shadow-size: 0.55rem;
 @mixin heading-shadow($color: $color-primary, $shadow-size: $heading-shadow-size) {
     text-shadow: $shadow-size solid $colour; 
 }
+
+/*** Les Extensions ***/
+/* J'inscris des propriétés dans une classe CSS */
+.typography {
+    color: $color-primary;
+    font-size: 2rem;
+    font-weight: 100;
+    line-height: 1.7
+}
+
+/* Grâce aux extensions j'applique toutes les propriétés de la classe CSS .typography à un autre sélecteur 
+grâce à @extend .typography*/
+
+h1 {
+    @extend .typography
+}
+
+/* La meilleure façon d'utiliser les extensions et d'éviter qu'un sélecteur qui ne se retrouve nulle part
+dans le CSS soit présent dans mon css est d'utilise le prefixe pourcentage */
+%typography {
+    color: $color-primary;
+    font-size: 2rem;
+    font-weight: 100;
+    line-height: 1.7
+}

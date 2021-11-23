@@ -32,3 +32,72 @@
 .project_heading {
     text-shadow: .55rem .55rem #15DEA5;
 }
+
+/* Mixin + (argument) Étape 1*/
+@mixing heading-shadow($colour) {
+    text-shadow: .55rem .55rem #15DEA5;
+}
+
+/* Mixin + (argument) Étape 2*/
+@mixing heading-shadow($colour) {
+    text-shadow: .55rem .55rem $colour;
+}
+
+/* Application de la mixin Étape 3*/
+.heading {
+    &__header {
+        @include heading-shadow(#fff);
+    }
+}
+
+/* Résultat CSS */
+.heading__header {
+    text-shadow: .55rem .55rem #fff;
+}
+
+/* Mixin + (argument : argument par défaut si je ne spécifie pas une couleur)*/
+@mixing heading-shadow($colour: $color-primary) {
+    text-shadow: .55rem .55rem $colour;
+}
+
+/* Sass Final */
+.heading {
+    &__header {
+        @include heading-shadow($color-white);
+    }
+}
+
+.form {
+    &__heading {
+        @include heading-shadow;
+    }
+}
+
+.about {
+    &__heading {
+        @include heading-shadow;
+    }
+}
+
+.project {
+    &__heading {
+        @include heading-shadow;
+    }
+}
+
+/* CSS Final une fois compilé */
+.heading__header {
+    text-shadow: .55rem .55rem #fff;
+}
+
+.form__heading {
+    text_-shadow: .55rem .55rem #15DEA5;
+}
+
+.about__heading {
+    text_-shadow: .55rem .55rem #15DEA5;
+}
+
+.project__heading {
+    text_-shadow: .55rem .55rem #15DEA5;
+}

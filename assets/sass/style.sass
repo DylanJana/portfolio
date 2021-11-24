@@ -145,3 +145,33 @@ dans le CSS soit présent dans mon css est d'utilise le prefixe pourcentage */
 .form__heading {
     text-shadow: 0.55rem 0.55rem #11af82; /* #11af82 correspond à la couleur $colour 10% plus sombre */
 }
+
+/*** Conditions ***/
+@if ( lightness($colour) < 25%) {
+    $colour: lighten($colour, 10%);
+}@else {
+    $colour: darken($colour, 10%);
+}
+
+/* Intégration de la condition dans la Mixin */
+@mixin heading-shadow($colour: $colour-primary, $size: $heading-shadow-size) {
+    @if(lightness($colour) < 25%) {
+        $colour: lighten($colour, 10%);
+    }@else {
+        $colour: darken($colour, 10%);
+    }
+
+    text-shadow: $size $size $colour;
+}
+
+/* Exemple d'application */
+.form {
+    &__heading {
+        @include heading-shadow($colour-secondary);
+    }
+}
+
+/* Résultat en CSS */
+.form__heading {
+    text-shadow: 0.55rem 0.55rem @002a67;
+}

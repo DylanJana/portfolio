@@ -134,3 +134,14 @@ dans le CSS soit présent dans mon css est d'utilise le prefixe pourcentage */
     font-weight: 100;
     line-height: 1.7
 }
+
+/*** Fonctions ***/
+/* Assombrir de 10 % la variable $colour */
+@mixin heading-shadow($colour: $colour-primary, $size: $heading-shadow-size) {
+    text-shadow : $size $size darken($colour, 10%);
+}
+
+/* CSS obtenu */
+.form__heading {
+    text-shadow: 0.55rem 0.55rem #11af82; /* #11af82 correspond à la couleur $colour 10% plus sombre */
+}

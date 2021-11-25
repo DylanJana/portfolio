@@ -175,3 +175,45 @@ dans le CSS soit présent dans mon css est d'utilise le prefixe pourcentage */
 .form__heading {
     text-shadow: 0.55rem 0.55rem @002a67;
 }
+
+/*** Fonctions ***/
+@function lightness-shift($colour) {
+    @if (lightness($colour) < 25% ) {
+        @return lighten($colour, 10%);
+    } @else {
+        @return darken($colour, 10%);
+    }
+}
+
+/* J'intégre ma fonction dans ma mixin */
+@mixin heading-shadow($colour: lightness-shift($colour-primary), $size: $heading-shadow-size) {
+    color: $colour;
+    text-shadow: $size $size $colour;
+}
+
+/* Réponse exercice */
+$color-primary: #15DEA5;
+$color-accent: #FFF;
+
+@function pastel($clr) {
+  $hue: hue($clr);
+  $sat: 100%;
+  $light: 90%;
+  $pastel: hsl($hue, $sat, $light);
+  @return $pastel;
+}
+.btn {
+  cursor: pointer;
+  padding: 1.5rem 3rem;
+  border-radius: 10rem;
+  font-size: 2rem;
+  font-family: 'Montserrat', sans-serif;
+  font-weight: 900;
+  font-style: italic;
+  color: $color-accent;
+  background: $color-primary;
+  &:hover {
+    background-color: pastel($color-primary);
+    color: $color-primary;
+  }
+}
